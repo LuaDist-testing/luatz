@@ -1,16 +1,17 @@
 -- This file was automatically generated for the LuaDist project.
 
 package = "luatz"
-version = "0.1-1"
+version = "0.2-1"
 -- LuaDist source
 source = {
-  tag = "0.1-1",
+  tag = "0.2-1",
   url = "git://github.com/LuaDist-testing/luatz.git"
 }
 -- Original source
 -- source = {
---    url = "https://github.com/daurnimator/luatz/archive/v0.1.tar.gz",
---    dir = "luatz-0.1",
+--    url = "https://github.com/daurnimator/luatz/archive/v0.2.tar.gz",
+--    md5 = "81e43a78e5626a2d27c447823e8542ab",
+--    dir = "luatz-0.2"
 -- }
 description = {
    summary = "This is a lua library for time and date manipulation.",
@@ -30,6 +31,7 @@ build = {
       ['luatz.gettime'] = "luatz/gettime.lua",
       ['luatz.init'] = "luatz/init.lua",
       ['luatz.parse'] = "luatz/parse.lua",
+      ['luatz.strftime'] = "luatz/strftime.lua",
       ['luatz.timetable'] = "luatz/timetable.lua",
       ['luatz.tzcache'] = "luatz/tzcache.lua",
       ['luatz.tzfile'] = "luatz/tzfile.lua",

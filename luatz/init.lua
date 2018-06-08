@@ -1,13 +1,40 @@
-local get_tz = require "luatz.tzcache".get_tz
+local _M = {
+	gettime = require "luatz.gettime" ;
+	parse = require "luatz.parse" ;
+	strftime = require "luatz.strftime" ;
+	timetable = require "luatz.timetable" ;
+	tzcache = require "luatz.tzcache" ;
+}
 
-local function time_in ( tz , now )
-	return get_tz ( tz ):localize ( now )
+--- Top-level aliases for common functions
+
+_M.time = _M.gettime.gettime
+_M.get_tz = _M.tzcache.get_tz
+
+--- Handy functions
+
+_M.time_in = function ( tz , now )
+	return _M.get_tz ( tz ):localize ( now )
 end
 
-return {
-	get_tz    = get_tz ;
-	time      = require "luatz.gettime".gettime ;
-	time_in   = time_in ;
-	parse     = require "luatz.parse" ;
-	timetable = require "luatz.timetable" ;
-}
+_M.now = function ( )
+	local ts = _M.gettime.gettime ( )
+	return _M.timetable.new_from_timestamp ( ts )
+end
+
+--- C-like functions
+
+_M.gmtime = function ( ts )
+	return _M.timetable.new_from_timestamp ( ts )
+end
+
+_M.localtime = function ( ts )
+	ts = _M.time_in ( nil , ts )
+	return _M.gmtime ( ts )
+end
+
+_M.ctime = function ( ts )
+	return _M.strftime.asctime ( _M.localtime ( ts ) )
+end
+
+return _M
