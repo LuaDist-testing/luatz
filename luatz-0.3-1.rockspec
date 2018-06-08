@@ -1,29 +1,35 @@
 -- This file was automatically generated for the LuaDist project.
 
 package = "luatz"
-version = "0.2-1"
+version = "0.3-1"
 -- LuaDist source
 source = {
-  tag = "0.2-1",
+  tag = "0.3-1",
   url = "git://github.com/LuaDist-testing/luatz.git"
 }
 -- Original source
 -- source = {
---    url = "https://github.com/daurnimator/luatz/archive/v0.2.tar.gz",
---    md5 = "81e43a78e5626a2d27c447823e8542ab",
---    dir = "luatz-0.2"
+--    url = "https://github.com/daurnimator/luatz/archive/v0.3.tar.gz",
+--    md5 = "d2f8061d68e475a8c8772d782d2dc1a2",
+--    dir = "luatz-0.3"
 -- }
 description = {
-   summary = "This is a lua library for time and date manipulation.",
+   summary = "library for time and date manipulation.",
    detailed = [[
-		This is a lua library for time and date manipulation.
+	A lua library for time and date manipulation.
 
-		Importantly, it allows you to convert time between locations (time zones).
+	Features include:
+	  - Normalisation of broken down date objects
+	    - allows for complex time/date manipulation logic e.g. "what day is it in 2 days, 5 hours from now?"
+	  - Conversion between locations (time zones) using your local zoneinfo database.
+	  - stftime style formatting
+
+	All operations are possible without C extensions, though if available they may be used to increase accuracy.
 	]],
    license = "MIT/X11"
 }
 dependencies = {
-   "lua >= 5.1", "lua < 5.3"
+   "lua >= 5.1"
 }
 build = {
    type = "builtin",
